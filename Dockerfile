@@ -18,6 +18,14 @@ RUN apt-get install -y -q \
     libxml2-dev \
     gdebi-core \
     supervisor
+
+RUN Rscript -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("stringr", repos="http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("ggplot2", repos="http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("lubridate", repos="http://cran.us.r-project.org")'
+
+RUN apt-get install -y -q git
+
 ENV LATEST rstudio-server-0.99.902-amd64.deb
 RUN wget "https://download2.rstudio.org/$LATEST"
 RUN gdebi -n $LATEST

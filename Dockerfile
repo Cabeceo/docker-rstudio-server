@@ -22,14 +22,14 @@ RUN Rscript -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")'
     Rscript -e 'install.packages("ggplot2", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("lubridate", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("data.table", repos="http://cran.us.r-project.org")' && \
-    Rscript -e 'install.packages("knitr", repos="http://cran.us.r-project.org")' && \
+    Rscript -e 'install.packages("knitr", repos="http://cran.us.r-project.org")'
 
 ENV LATEST rstudio-server-1.0.143-amd64.deb
 RUN wget "https://download2.rstudio.org/$LATEST" && \
     gdebi -n $LATEST && \
     rm $LATEST && \
     (adduser --disabled-password --gecos "" guest && echo "guest:guest"|chpasswd) && \
-    mkdir -p /var/log/supervisor && \
+    mkdir -p /var/log/supervisor
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 EXPOSE 8787

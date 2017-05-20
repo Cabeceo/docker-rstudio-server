@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+### This is mostly a hack to get around rstudio-server's
+### lack of --foreground mode (or whatever)
+
+rstudio-server start
+sleep infinity
+

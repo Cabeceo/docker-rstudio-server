@@ -21,7 +21,7 @@ RUN Rscript -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")'
     Rscript -e 'install.packages("data.table", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("knitr", repos="http://cran.us.r-project.org")'
 
-ENV LATEST rstudio-server-1.0.143-amd64.deb
+ENV LATEST rstudio-server-1.1.383-amd64.deb
 RUN curl --silent -O "https://download2.rstudio.org/$LATEST" && \
     gdebi -n $LATEST && \
     rm $LATEST && \

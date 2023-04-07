@@ -1,5 +1,7 @@
 FROM debian:10
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get -qqy update && \
     apt-get install -y -q \
     r-base r-base-dev \
@@ -10,9 +12,13 @@ RUN apt-get -qqy update && \
     r-base-dev \
     r-recommended \
     r-cran-rcurl \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libxml2-dev \
     gdebi-core
 
 RUN Rscript -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")' && \
+    Rscript -e 'install.packages("markdown", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("stringr", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("ggplot2", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("lubridate", repos="http://cran.us.r-project.org")' && \

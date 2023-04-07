@@ -14,10 +14,13 @@ RUN apt-get -qqy update && \
     r-cran-rcurl \
     libfontconfig1-dev \
     libharfbuzz-dev \
+    libfribidi-dev \
+    libfreetype6-dev \
     libxml2-dev \
     gdebi-core
 
-RUN Rscript -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")' && \
+RUN Rscript -e 'install.packages("textshaping", repos="http://cran.us.r-project.org")' && \
+    Rscript -e 'install.packages("dplyr", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("markdown", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("stringr", repos="http://cran.us.r-project.org")' && \
     Rscript -e 'install.packages("ggplot2", repos="http://cran.us.r-project.org")' && \
